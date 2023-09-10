@@ -1,0 +1,134 @@
+<html>
+
+<head>
+  <title>Blumengeschäft</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body>
+
+  
+
+
+  <div class="container">
+      <div class="row">
+        <div class="col">
+          <form>
+            <h1>Blumengesch&#228;ft</h1>
+            
+            <div class="row">
+              
+            <div class="col">
+            <div class="form-floating">
+              <input type="Name" class="form-control" id="floatingName" placeholder="Name">
+              <label for="floatingName">Name:</label>
+            </div>
+          </div>
+            <div class="col">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+              <label for="floatingInput">Email:</label>
+            </div>
+            </div>
+            </div>
+          
+            
+            <div class="row">
+              <div class="col">
+                <div class="col-md-7">
+            <div class="form-floating">
+              <select class="Blumen" id="form-select sel" onchange="funktion_eventListenerBlumenauswahl();">
+                <option selected>Sonnenblume</option>
+                <option value="Sonnenblume">Sonnenblume</option>
+                <option value="Tulpe">Tulpe</option>
+                <option value="Lilie">Lilie</option>
+                <option value="Rose">Rose</option>
+                <option value="Edelweiß">Edelweiß</option>
+              </select>
+              <label for="floatingSelect">Produkte:</label>
+            </div> 
+          </div>
+       
+           
+            <div class="col-md">
+                <div class="row align-items-center">
+                <div class="col-md align-self-center">
+                    <span>#Preis</span>
+                    </div>
+                    <div class="col-md">
+                       <button type="button" onclik="funciton_eventListenerButtonHinzufuegen();">Hinzufügen</button><br>
+            </div>
+          </div>
+          </div>
+          </div>
+          
+            
+
+            <br><textarea name="message" rows="10" cols="100">Hallo,
+ich habe noch folgende Anmerkung:
+              </textarea><br>
+            
+          </form>
+        </div>
+      
+
+
+          <div class="col">
+          <h1>Warenkorb</h1>
+
+          <table class="table table-striped">
+            <tr class="table">
+              <th>
+                  Produkt
+              </th>
+              <th>
+                Preis
+              </th>
+            </tr>
+            <tr>
+              <td>
+                Sonnenblume
+              </td>
+              <td>
+                1.99€
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Rose weiß
+              </td>
+              <td>
+                10.00€
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Tulpe (SONDERANGEBOT!)
+              </td>
+              <td>
+                1.00€
+              </td>
+            </tr>
+           
+          </table>
+
+         
+          Gesamtsumme: 0.00€<br>
+
+          <div class="button">
+            <button class="btn btn-primary" type="submit">Bestellen</button> 
+          </div>
+      </div>
+      
+  </div>
+
+<script scr="">
+function eventListenerBlumenauswahl(){ //Dropdown Menü mit Blumen
+alert("hallo1");
+}
+</script>
+</body>
+
+</html>
