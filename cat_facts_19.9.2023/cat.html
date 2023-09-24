@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cat Facts</title>
+
+    <button id="Button" onclick= CatFact()>Get Cat Fact</button>
 
 <style></style>
 
@@ -11,10 +13,31 @@
 <body>
     
 <script>
-    const Cat_url= 'https://cat-fact.herokuapp.com/facts';
+    
+   function CatFact(){
+    const Cat_url= 'https://cat-fact.herokuapp.com/facts/random';
     fetch(Cat_url)
-    //aufgabe mit api random fact anzeigen können oder liste anzeigen mit facts 
+    .then(response => response.json())
+    .then(data => {
+        const fact = data.text;
+        const factElement = document.createElement('p');
+        factElement.textContent = fact;
+        
+        factElement.id='output';
+        const old_fact = document.getElementById('output');
+
+        if(old_fact){
+            old_fact.remove();
+        }
+        
+        document.body.appendChild(factElement);
+       
+        
+    })};
+    
 </script>
+
+
 
 </body>
 </html>
