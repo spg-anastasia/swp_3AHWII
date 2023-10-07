@@ -7,17 +7,24 @@
 </head>
 <body>
     <script>
-    function f (parameter, ... ) {
-        // Aktion mit parameter(n) ...
-        throw new Error ("Fehler!");
-        return ergebnis;
-     }
-     
-     try {
-       // irgendwas wo dann throw passiert
-     } catch Error e {
-       // Abhandlung des Problems
-     }
-</script>
+      
+        function f(i) {
+            if (i % 2 === 0) {
+                throw new Error("Zahl ist gerade");
+            } else {
+                return i;
+            }
+        }
+
+        try {
+            for (let i = 1; i <= 20; i++) {
+                let result = f(i);
+                console.log(`${result}`);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    </script>
 </body>
 </html>
+
