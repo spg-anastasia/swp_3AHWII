@@ -17,7 +17,7 @@
         const Cat_url = 'https://cat-fact.herokuapp.com/facts/random'; 
         fetch(Cat_url) // fetch wir verwendet um Daten abzurufen und gibt ein Promise zurück,dass auf eine Antwort wartet
             .then(response => response.json())// Antwort wird in json umgewandelt
-            .then(data => { // hier wird überprüft ob x>0 ist wenn ja wird resolve(data) aufgerufen, wenn nicht dann reject('Error')
+            .then(data => { // hier wird überprüft ob x>0 also positiv ist wenn ja wird resolve(data) aufgerufen, wenn nicht dann reject('Error')
                 if (x > 0) {
                     resolve(data);
                 } else {
