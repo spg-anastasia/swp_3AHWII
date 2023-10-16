@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises</title>
+</head>
+<body>
+    <button onclick="fetchRandomData()">Fetch</button> <!--Funktion wird durch Button aufgerufen-->
+    <div id="output"></div> <!--Output div wird erstellt wo dann der Output angezeigt wird-->
+
+    <script>
+       
+       function fetchRandomData() {
+    let x = Math.random() - 0.5; //random Zahl die manchmal positiv und manchmal negativ ist wird erstellt
+    let myPromise = new Promise(function(resolve, reject) { //neues Promise wird erstellt mit zwei Argumenten resolve oder reject
+        const Cat_url = 'https://cat-fact.herokuapp.com/facts/random'; 
+        fetch(Cat_url) // fetch wir verwendet um Daten abzurufen und gibt ein Promise zurück,dass auf eine Antwort wartet
+            .then(response => response.json())// Antwort wird in json umgewandelt
+            .then(data => { // hier wird überprüft ob x>0 ist wenn ja wird resolve(data) aufgerufen, wenn nicht dann reject('Error')
+                if (x > 0) {
+                    resolve(data);
+                } else {
+                    reject('Error');
+                }
+            })
+            .catch(error => reject(error)); //fängt den Error auf und lehnt das Promise ab
+    });
+
+    myPromise
+        .then(function(value) { //wenn das Promise erfolgreich aufgelöst (resolved) wurde mit einem Wert (value)
+            displayResult('successful', value); // dann wird die Funktion displayResult() aufgerufen um das Ergebnis anzuzeigen
+        })
+        .catch(function(error) { //wenn das Promise abgelehnt (rejected) wurde
+            displayResult('unsuccessful', error);// dann wird mit der Funktion der Fehler angezeigt
+        });
+}
+
+        function displayResult(status, data) {
+            const outputDiv = document.getElementById('output');// sucht das HTML-Element 'output' und speichert es unter der variable outputDiv
+            const resultDiv = document.createElement('div');// erstellt neues Div 
+
+            if (status === 'successful') { //überprüft übergebenen status wenn er successfull ist
+                resultDiv.innerText = `Successful: ${JSON.stringify(data)}`; //dann gibt es die Daten aus
+            } else {
+                resultDiv.innerText = `Unsuccessful: ${JSON.stringify(data)}`; //wenn es unsuccessful ist dann kommt eine Fehlermeldung 'Error'
+                resultDiv.style.backgroundColor = '#FF0000'; //und der Hintergrund des Divs wird Rot gemacht
+            }
+
+            outputDiv.appendChild(resultDiv); // resultDiv wird dem outputDiv hinzugeüft damit es auf der Website sichtbar ist.
+        }
+    </script>
+</body>
+</html>
