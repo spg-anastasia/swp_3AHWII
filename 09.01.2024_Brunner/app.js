@@ -8,11 +8,20 @@ class Person{
     this.groesse= groesse;
 }
   get bmi() {
-    return this.gewichtPar / (this.groesse * this.groesse);
+    const bmiValue= this.gewicht / (this.groesse * this.groesse);
+    return parseFloat(bmiValue.toFixed(1));
+  }
+
+  set groesse (groesse){
+    //grösse in m
+    if(groesse < 0.5|| groesse > 3){
+        throw new Error('ungültige Grösse');
+    }
+    this.#groesse = groesse;
   }
  set gewicht (gewichtPar){
  //gewicht in kg
- if(gewichtPar <1 || gewichtPar >500){
+ if(gewichtPar < 1 || gewichtPar > 500){
     throw new Error('ungültiges Gewicht');
 }
     this.#gewicht = gewichtPar; }
