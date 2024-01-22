@@ -85,12 +85,12 @@ const namePar = document.getElementById('name');
 
             toString() {
                 return `
-                    Name: ${this.#name}
-                    Geschlecht: ${this.#geschlecht}
-                    Gewicht: ${this.#gewicht} kg
-                    Größe: ${this.#groesse} m
-                    BMI: ${this.bmi}
-                    Kategorie: ${this.getGewichtkategorie()}
+                    Name: ${this.#name} <br>
+                    Geschlecht: ${this.#geschlecht} <br>
+                    Gewicht: ${this.#gewicht} kg <br>
+                    Größe: ${this.#groesse} m <br>
+                    BMI: ${this.bmi} <br>
+                    Kategorie: ${this.getGewichtkategorie()} 
                 `;
             }
         }
