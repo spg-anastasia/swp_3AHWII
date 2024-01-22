@@ -9,7 +9,21 @@
 </head>
 <p>BMI Rechner</p>
 <body>
-    
+ <label for="name">Name:</label>
+<input type="text" id="name" placeholder="Name">
+
+<label for="geschlecht">Geschlecht (w/m):</label>
+<input type="text" id="geschlecht" placeholder="Geschlecht">
+
+<label for="gewicht">Gewicht (in kg):</label>
+<input type="number" id="gewicht" placeholder="Gewicht">
+
+<label for="groesse">Größe (in m):</label>
+<input type="number" id="groesse" placeholder="Größe">
+
+<button onclick="berechneBMI()">Berechne BMI</button>
+
+<div id="ergebnis"></div>
 
 
 
