@@ -7,10 +7,13 @@ class Person {
   #name;
   #gewicht;
   #groesse;
-  constructor(namePar, gewichtPar, groessePar) {
+  #geschlecht;
+
+  constructor(namePar, gewichtPar, groessePar, geschlechtPar) {
       this.name = namePar;
       this.gewicht = gewichtPar;
       this.groesse = groessePar;
+      this.geschlecht= geschlechtPar;
   }
 
   set name(namePar) {
@@ -40,23 +43,56 @@ class Person {
       this.#groesse = groessePar;
   }
 
+  set geschlecht(geschlechtPar) {
+    if (typeof geschlechtPar!== 'string'){
+      throw new Error('geben Sie einen Buchstaben ein')
+    }
+    if(geschlechtPar.length !==1){
+    throw new Error('geben sie "w" für weiblich oder "m" für männlich ein')
+  }
+   
+    this.#geschlecht = geschlechtPar;
+
+  }
+  get geschlecht() {
+    return this.#geschlecht;
+  }
+
   get bmi() {
       const nmbr = this.#gewicht / (this.#groesse * this.#groesse);
       return Math.round(nmbr * 10) / 10;
   }
+
+getGewichtkategorie(){
+  const bmi = this.bmi;
+
+  if(bmi<18.5){
+    return 'Untergewichtig';
+  }
+
+  if(bmi>=18.5&&bmi<25){
+    return 'Normalgewichtig';
+  }
+
+  else if (bmi>=25){
+    return'Übergewichtig';
+  }
+
+
+}
+
   toString() {
-      return (
-          'Name: ' +
-          this.#name +
-          ' Gewicht: ' +
-          this.#gewicht +
-          ' Größe: ' +
-          this.#groesse +
-          ' BMI: ' +
-          this.bmi
-      );
+    return `
+      Name: ${this.#name}
+      Geschlecht: ${this.#geschlecht}
+      Gewicht: ${this.#gewicht} kg
+      Größe: ${this.#groesse} m
+      BMI: ${this.bmi}
+      Kategorie: ${this.getGewichtkategorie()}
+    `;
   }
 }
+
 a = [
   ['Peta', 90, 1.7, 'w'],
   ['Lisa', 50, 3.5, 'w'], //Wie schaffe ich es, dass hier ein Fehler geworfen wird?
