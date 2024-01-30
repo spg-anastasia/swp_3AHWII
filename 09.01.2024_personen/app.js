@@ -1,7 +1,3 @@
-// So liegt der Normalwert bei Männern laut Deutscher Gesellschaft für Ernährung
-// im Intervall von 20 bis 25 kg / m², während er sich
-// bei Frauen im Intervall von 19 bis 24 kg / m² befindet.
-
 const namePar = document.getElementById('name');
         const geschlechtPar = document.getElementById('geschlecht');
         const gewichtPar = document.getElementById('gewicht');
@@ -14,14 +10,12 @@ const namePar = document.getElementById('name');
             #gewicht;
             #groesse;
             #geschlecht;
-
             constructor(namePar, gewichtPar, groessePar, geschlechtPar) {
                 this.name = namePar;
                 this.gewicht = gewichtPar;
                 this.groesse = groessePar;
                 this.geschlecht = geschlechtPar;
             }
-
             set name(namePar) {
                 if (typeof namePar !== 'string') {
                     throw new Error('ungültiger Name');
@@ -31,7 +25,6 @@ const namePar = document.getElementById('name');
                 }
                 this.#name = namePar;
             }
-
             set gewicht(gewichtPar) {
                 // gewicht in kg
                 if (gewichtPar < 10 || gewichtPar > 500) {
@@ -48,7 +41,6 @@ const namePar = document.getElementById('name');
                 }
                 this.#groesse = groessePar;
             }
-
             set geschlecht(geschlechtPar) {
                 if (typeof geschlechtPar !== 'string') {
                     throw new Error('geben Sie einen Buchstaben ein')
@@ -61,12 +53,10 @@ const namePar = document.getElementById('name');
             get geschlecht() {
                 return this.#geschlecht;
             }
-
             get bmi() {
                 const nmbr = this.#gewicht / (this.#groesse * this.#groesse);
                 return Math.round(nmbr * 10) / 10;
             }
-
             getGewichtkategorie() {
                 const bmi = this.bmi;
 
@@ -82,7 +72,6 @@ const namePar = document.getElementById('name');
                     return 'Übergewichtig';
                 }
             }
-
             toString() {
                 return `
                     Name: ${this.#name} <br>
@@ -94,7 +83,6 @@ const namePar = document.getElementById('name');
                 `;
             }
         }
-
         function berechneBMI() {
             try {
                 const name = namePar.value;
@@ -103,10 +91,9 @@ const namePar = document.getElementById('name');
                 const groesse = parseFloat(groessePar.value);
 
                 if (isNaN(gewicht) || isNaN(groesse) || gewicht <= 0 || groesse <= 0) {
-                    alert('Bitte geben Sie gültige Werte für Gewicht und Größe ein.');
+                    throw new Error ('Ungültige Werte für Gewicht und/oder Grösse');
                     return;
                 }
-
                 const person = new Person(name, gewicht, groesse, geschlecht);
                 ergebnisElement.innerHTML = `<p>${person.toString()}</p>`;
             } catch (error) {
