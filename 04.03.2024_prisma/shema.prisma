@@ -31,7 +31,7 @@ model Anfrage {
   fachid         Int
   schulstufe    Schulstufe @relation(fields: [schulstufeId], references: [id])
   schulstufeId  Int
-  erstellungsdatum DateTime
+  erstellungsdatum DateTime @default(now())
   titel          String
   beschreibung   String
 }
@@ -44,7 +44,7 @@ model Angebot {
   fachid         Int
   schulstufe    Schulstufe @relation(fields: [schulstufeId], references: [id])
   schulstufeId  Int
-  erstellungsdatum DateTime
+  erstellungsdatum DateTime @default(now())
   titel          String
   beschreibung   String
 }
@@ -57,7 +57,7 @@ model Lernzettel {
   fachid         Int
   schulstufe    Schulstufe @relation(fields: [schulstufeId], references: [id])
   schulstufeId  Int
-  erstellungsdatum DateTime
+  erstellungsdatum DateTime @default(now())
   titel          String
   beschreibung   String
   dateipfad      Bytes     
