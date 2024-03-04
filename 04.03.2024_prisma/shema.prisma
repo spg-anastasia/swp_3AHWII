@@ -1,0 +1,88 @@
+datasource db {
+    provider = "sqlite"
+    url      = "file:./dev.db"
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model Benutzer {
+  id            Int         @id @default(autoincrement())
+  schulstufe    Schulstufe  @relation(fields: [stufenid], references: [id])
+  schulstufeId  int
+  vorname       String
+  name          String
+  email         String      @unique
+  passwort      String
+  rolle         Rolle       
+  benutzername  String      @unique
+  anfragen      Anfrage[]   
+  angebote      Angebot[]   
+  lernzettel    Lernzettel[] 
+  
+}
+
+model Anfrage {
+  id             Int        @id @default(autoincrement())
+  benutzer      Benutzer   @relation(fields: [userid], references: [id])
+  userid         Int
+  fach          Fach       @relation(fields: [fachid], references: [id])
+  fachid         Int
+  schulstufe    Schulstufe @relation(fields: [schulstufeId], references: [id])
+  schulstufeId  Int
+  erstellungsdatum DateTime
+  titel          String
+  beschreibung   String
+}
+
+model Angebot {
+  id             Int        @id @default(autoincrement())
+  benutzer      Benutzer   @relation(fields: [userid], references: [id])
+  userid         Int
+  fach          Fach       @relation(fields: [fachid], references: [id])
+  fachid         Int
+  schulstufe    Schulstufe @relation(fields: [schulstufeId], references: [id])
+  schulstufeId  Int
+  erstellungsdatum DateTime
+  titel          String
+  beschreibung   String
+}
+
+model Lernzettel {
+  id             Int        @id @default(autoincrement())
+  benutzer      Benutzer   @relation(fields: [userid], references: [id])
+  userid         Int
+  fach          Fach       @relation(fields: [fachid], references: [id])
+  fachid         Int
+  schulstufe    Schulstufe @relation(fields: [schulstufeId], references: [id])
+  schulstufeId  Int
+  erstellungsdatum DateTime
+  titel          String
+  beschreibung   String
+  dateipfad      Bytes     
+}
+
+model Fach {
+  id          Int       @id @default(autoincrement())
+  name        String
+  fachkuerzel String
+  anfragen    Anfrage[] 
+  angebote    Angebot[] 
+  lernzettel  Lernzettel[] 
+}
+
+model Schulstufe {
+  id          Int       @id @default(autoincrement())
+  name        String
+  stufenBenutzer Benutzer[] 
+  anfragen    Anfrage[] 
+  angebote    Angebot[] 
+  lernzettel  Lernzettel[] 
+}
+
+enum Rolle {
+  Schueler
+  Tutor
+}
+
