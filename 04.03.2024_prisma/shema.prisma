@@ -14,9 +14,7 @@ model Benutzer {
   vorname       String
   name          String
   email         String      @unique
-  passwort      String
-  rolle         String     
-  benutzername  String      @unique
+  passwort      String    
   anfragen      Anfrage[]   
   angebote      Angebot[]   
   lernzettel    Lernzettel[] 
