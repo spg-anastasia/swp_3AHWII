@@ -9,16 +9,16 @@ generator client {
 
 model Benutzer {
   id        Int         @id @default(autoincrement())
-  Fullname  String
-  Email     String      @unique
-  Watchlist Watchlist[]
+  fullname  String
+  email     String      @unique
+  Watchlists Watchlist[]
 }
 
 model Watchlist {
   id         Int      @id @default(autoincrement())
   name       String
   createdAt  DateTime @default(now())
-  Track      Track[]
+  Tracks      Track[]
   User       Benutzer @relation(fields: [benutzerId], references: [id])
   benutzerId Int
 }
@@ -29,5 +29,5 @@ model Track {
   duration  Int
   genre     String
   artist    String
-  WatchList Watchlist[]
+  WatchLists Watchlist[]
 }
