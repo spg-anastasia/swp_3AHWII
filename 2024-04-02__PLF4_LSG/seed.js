@@ -70,9 +70,12 @@ async function seed() {
                 ],
             },
             data: {
-                Track: { connect: rndTracklist },
+                Tracks: { connect: rndTracklist },
             },
         });
     }
+    console.log(`Watchlists wurden gefüllt`);
+  
+    
 }
 seed().then(() => console.log('done seeding'));
