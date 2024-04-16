@@ -1,8 +1,7 @@
-console.log('here is my query:');
-// TODO
+console.log("funktioniert");
 
 const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({ log: ['query', 'info', 'warn', 'error'] });
 
 async function getWatchlists(userId) {
     const user = await prisma.benutzer.findUnique({
@@ -44,3 +43,18 @@ async function getTracks(watchlistId) {
 }
 
 module.exports = { getWatchlists, getTracks };
+
+
+async function main() {
+
+    const userId = 1;
+    const watchlists = await getWatchlists(userId);
+    console.log(`Watchlists für Benutzer mit ID ${userId}:`, watchlists);
+
+ 
+    const watchlistId = 1;
+    const tracks = await getTracks(watchlistId);
+    console.log(`Tracks von der Watchlist mit ID ${watchlistId}:`, tracks);
+}
+
+main()
