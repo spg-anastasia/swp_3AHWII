@@ -47,7 +47,7 @@ module.exports = { getWatchlists, getTracks };
 
 async function main() {
 
-    const userId = 1;
+    const userId = 2;
     const watchlists = await getWatchlists(userId);
     console.log(`Watchlists für Benutzer mit ID ${userId}:`, watchlists);
 
