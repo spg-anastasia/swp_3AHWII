@@ -1,6 +1,6 @@
 console.log('here is my query:');
 // TODO
-
+// Nicht verwendbar
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
