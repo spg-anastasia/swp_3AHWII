@@ -36,6 +36,6 @@ model Tier {
 model Mitarbeiter {
   id           String @id @default(cuid())
   name         String
-  abteilungen  Abteilung[]
+  abteilung Abteilung[]
 }
 
