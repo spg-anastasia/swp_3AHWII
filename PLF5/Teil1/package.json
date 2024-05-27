@@ -5,7 +5,8 @@
     "main": "seed.js",
     "scripts": {
         "seed-dev": "node --inspect seed.js",
-        "query-dev": "node --inspect query.js"
+        "query-dev": "node --inspect query.js",
+        "start": "node query.js"
     },
     "prisma": {
         "seed": "node seed.js"
