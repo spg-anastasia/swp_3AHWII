@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Bank{
+   id      String @id @default(cuid())
+   bic Int
+   Accounts Account[] //mehrere accounts
+   Customers Customer[] //mehrere customers
+}
+
+model Customer{
+  id String @id @default(cuid())
+  name String
+  email String @unique
+  Accounts Account[] //ein customer hat mehrere Accounts
+  Bank Bank @relation(fields: [bankId], references: [id])//ein costumer hat eine bank
+   bankId String
+}
+
+model Account{
+  id String @id@default(cuid())
+  iban String
+  Customer   Customer @relation(fields: [customerId], references: [id])//ein account hat einen customer/besitzer
+  customerId String
+  Bank Bank @relation(fields: [bankId], references: [id])//ein account ist bei einer bank
+   bankId String
+  Transactions Transaction[] @relation //mehrere Transactions von einem account
+
+}
+
+model Transaction{
+  id String @id@default(cuid())
+verwendungszweck String
+date DateTime
+amount Int
+fromAcct Account @relation(fields: [accountId], references: [id]) //ein account macht die transaction
+accountId String
+toAcct String
+}
